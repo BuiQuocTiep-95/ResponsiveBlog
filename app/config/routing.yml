@@ -1,0 +1,27 @@
+
+cvut_fit_bi_wt1_blog_ui:
+    resource: "@CvutFitBiWT1BlogUiBundle/Controller/"
+    type:     annotation
+    prefix:   /old
+
+cvut_fit_bi_wt1_blog_ng:
+    resource: "@CvutFitBiWT1BlogUiBundle/Controller/AngularController.php"
+    type:     annotation
+    prefix:   /
+
+homepage:
+    pattern:   /
+    defaults:  { _controller: AcmeHomeBundle:home:show }
+
+logout:
+    path: /logout
+
+cvut_fit_bi_wt1_blog_api:
+    resource: "@CvutFitBiWT1BlogUiBundle/Controller/FOSPostController.php"
+    type: rest
+    prefix:   /api
+    defaults: { _format: json }
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
