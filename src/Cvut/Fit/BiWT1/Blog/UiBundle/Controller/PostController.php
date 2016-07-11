@@ -238,6 +238,7 @@ class PostController extends Controller
         $comment= new Comment();
         $file= new File();
         $comment->addFile($file);
+        $comment->setAuthor($this->getUser());
 
         $form = $this->createForm(new CommentType(), $comment, array(
             'action' => $this->generateUrl('post_detail', array('id' => $id)),

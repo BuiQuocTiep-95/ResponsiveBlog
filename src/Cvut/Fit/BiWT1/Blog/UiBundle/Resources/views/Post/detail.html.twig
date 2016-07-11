@@ -96,9 +96,9 @@
 
             {% if not comment.children is empty %}
                 {% for reply in comment.children %}
-                    <div class="reply">
+                    <div class="card blue-grey lighten-1 white-text comment reply">
 
-                        <h3> {{ reply.author.name }}, {{ reply.created | date }} </h3>
+                        <h5 class="orange-text darken-3"> {{ reply.author.name }}, {{ reply.created | date }} </h5>
                         <p> {{ reply.text }} </p>
 
                         {% if not reply.files.isEmpty %}
@@ -137,7 +137,6 @@
         <h5>Přidat nový komentář</h5>
 
             {{ form_start(form_comment, {'attr': {'novalidate': 'novalidate'}}) }}
-            {{ form_row(form_comment.author.name) }}
             {{ form_row(form_comment.text) }}
             <div>
                 {% for file in form_comment.files %}

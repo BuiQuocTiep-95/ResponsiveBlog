@@ -37,6 +37,7 @@ class CommentController extends Controller {
 
         $parent=$this->get('cvut_fit_biwt1_blog_base.entity.repository.comment')->findById($id);
         $post=$parent->getPost();
+        $comment->setAuthor($this->getUser());
 
         $form = $this->createForm(new CommentType(), $comment, array(
             'action' => $this->generateUrl('reply_comment', array('id' => $id)),

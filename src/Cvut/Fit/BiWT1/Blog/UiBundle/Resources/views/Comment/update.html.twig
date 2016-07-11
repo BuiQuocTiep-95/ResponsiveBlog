@@ -9,7 +9,6 @@
 
             <form method="post" enctype="multipart/form-data">
                 {{ form_start(form_comment, {'attr': {'novalidate': 'novalidate'}}) }}
-                {{ form_row(form_comment.author.name) }}
                 {{ form_row(form_comment.text) }}
                 {{ form_widget(form_comment.files[0]) }}
                 <div class="right-align">

@@ -23,32 +23,32 @@ class __TwigTemplate_f3b2bb0b31d931a74f3b4fc2182904768ccc1e7d158a121de81e9ee2325
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a8637902e3a17d6440a849bbbecbbcce7530106952dec80fa8033131a3eec602 = $this->env->getExtension("native_profiler");
-        $__internal_a8637902e3a17d6440a849bbbecbbcce7530106952dec80fa8033131a3eec602->enter($__internal_a8637902e3a17d6440a849bbbecbbcce7530106952dec80fa8033131a3eec602_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "CvutFitBiWT1BlogUiBundle:Comment:update.html.twig"));
+        $__internal_cb15426d0875beb2a176f841ca938dbe4551b59d3a4fd74fcebae76b595dbb0f = $this->env->getExtension("native_profiler");
+        $__internal_cb15426d0875beb2a176f841ca938dbe4551b59d3a4fd74fcebae76b595dbb0f->enter($__internal_cb15426d0875beb2a176f841ca938dbe4551b59d3a4fd74fcebae76b595dbb0f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "CvutFitBiWT1BlogUiBundle:Comment:update.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_a8637902e3a17d6440a849bbbecbbcce7530106952dec80fa8033131a3eec602->leave($__internal_a8637902e3a17d6440a849bbbecbbcce7530106952dec80fa8033131a3eec602_prof);
+        $__internal_cb15426d0875beb2a176f841ca938dbe4551b59d3a4fd74fcebae76b595dbb0f->leave($__internal_cb15426d0875beb2a176f841ca938dbe4551b59d3a4fd74fcebae76b595dbb0f_prof);
 
     }
 
     // line 3
     public function block_page_name($context, array $blocks = array())
     {
-        $__internal_add72d807590935b2a21c3585c219185bc46bf65118bf1c5471e4cc50153bbc4 = $this->env->getExtension("native_profiler");
-        $__internal_add72d807590935b2a21c3585c219185bc46bf65118bf1c5471e4cc50153bbc4->enter($__internal_add72d807590935b2a21c3585c219185bc46bf65118bf1c5471e4cc50153bbc4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_name"));
+        $__internal_b2f3a4bf116464242a18c95ad64ac50da5a5cf67713bf8404af0977dfb9b8b71 = $this->env->getExtension("native_profiler");
+        $__internal_b2f3a4bf116464242a18c95ad64ac50da5a5cf67713bf8404af0977dfb9b8b71->enter($__internal_b2f3a4bf116464242a18c95ad64ac50da5a5cf67713bf8404af0977dfb9b8b71_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "page_name"));
 
         echo "Detail příspěvku | Úprava ";
         
-        $__internal_add72d807590935b2a21c3585c219185bc46bf65118bf1c5471e4cc50153bbc4->leave($__internal_add72d807590935b2a21c3585c219185bc46bf65118bf1c5471e4cc50153bbc4_prof);
+        $__internal_b2f3a4bf116464242a18c95ad64ac50da5a5cf67713bf8404af0977dfb9b8b71->leave($__internal_b2f3a4bf116464242a18c95ad64ac50da5a5cf67713bf8404af0977dfb9b8b71_prof);
 
     }
 
     // line 5
     public function block_formComment($context, array $blocks = array())
     {
-        $__internal_e0cf6ace65cc03fe3d42ee953205ca9093063d4eaec2ac6ab172a74d3c84ec51 = $this->env->getExtension("native_profiler");
-        $__internal_e0cf6ace65cc03fe3d42ee953205ca9093063d4eaec2ac6ab172a74d3c84ec51->enter($__internal_e0cf6ace65cc03fe3d42ee953205ca9093063d4eaec2ac6ab172a74d3c84ec51_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "formComment"));
+        $__internal_acfcdb72c4c83f0409e4be479905d0ceed324d3c896191c02b98e7e232e136af = $this->env->getExtension("native_profiler");
+        $__internal_acfcdb72c4c83f0409e4be479905d0ceed324d3c896191c02b98e7e232e136af->enter($__internal_acfcdb72c4c83f0409e4be479905d0ceed324d3c896191c02b98e7e232e136af_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "formComment"));
 
         // line 6
         echo "    ";
@@ -64,46 +64,42 @@ class __TwigTemplate_f3b2bb0b31d931a74f3b4fc2182904768ccc1e7d158a121de81e9ee2325
             echo "
                 ";
             // line 12
-            echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form_comment"]) ? $context["form_comment"] : $this->getContext($context, "form_comment")), "author", array()), "name", array()), 'row');
-            echo "
-                ";
-            // line 13
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form_comment"]) ? $context["form_comment"] : $this->getContext($context, "form_comment")), "text", array()), 'row');
             echo "
                 ";
-            // line 14
+            // line 13
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form_comment"]) ? $context["form_comment"] : $this->getContext($context, "form_comment")), "files", array()), 0, array(), "array"), 'widget');
             echo "
                 <div class=\"right-align\">
                     ";
-            // line 16
+            // line 15
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form_comment"]) ? $context["form_comment"] : $this->getContext($context, "form_comment")), "save", array()), 'widget');
             echo "
                 </div>
                 ";
-            // line 18
+            // line 17
             echo             $this->env->getExtension('form')->renderer->renderBlock((isset($context["form_comment"]) ? $context["form_comment"] : $this->getContext($context, "form_comment")), 'form_end');
             echo "
             </form>
         </div>
     ";
         }
-        // line 22
+        // line 21
         echo "
 ";
         
-        $__internal_e0cf6ace65cc03fe3d42ee953205ca9093063d4eaec2ac6ab172a74d3c84ec51->leave($__internal_e0cf6ace65cc03fe3d42ee953205ca9093063d4eaec2ac6ab172a74d3c84ec51_prof);
+        $__internal_acfcdb72c4c83f0409e4be479905d0ceed324d3c896191c02b98e7e232e136af->leave($__internal_acfcdb72c4c83f0409e4be479905d0ceed324d3c896191c02b98e7e232e136af_prof);
 
     }
 
-    // line 25
+    // line 24
     public function block_solution($context, array $blocks = array())
     {
-        $__internal_11112233b53808f213a7e62f0a11a3b61b4464b0dafeeb2354f791a085f6b1f3 = $this->env->getExtension("native_profiler");
-        $__internal_11112233b53808f213a7e62f0a11a3b61b4464b0dafeeb2354f791a085f6b1f3->enter($__internal_11112233b53808f213a7e62f0a11a3b61b4464b0dafeeb2354f791a085f6b1f3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "solution"));
+        $__internal_72dc6b5f2504cf519e8a23ad24a1e5d13fb311421d5dc04698e3e27923130343 = $this->env->getExtension("native_profiler");
+        $__internal_72dc6b5f2504cf519e8a23ad24a1e5d13fb311421d5dc04698e3e27923130343->enter($__internal_72dc6b5f2504cf519e8a23ad24a1e5d13fb311421d5dc04698e3e27923130343_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "solution"));
 
         
-        $__internal_11112233b53808f213a7e62f0a11a3b61b4464b0dafeeb2354f791a085f6b1f3->leave($__internal_11112233b53808f213a7e62f0a11a3b61b4464b0dafeeb2354f791a085f6b1f3_prof);
+        $__internal_72dc6b5f2504cf519e8a23ad24a1e5d13fb311421d5dc04698e3e27923130343->leave($__internal_72dc6b5f2504cf519e8a23ad24a1e5d13fb311421d5dc04698e3e27923130343_prof);
 
     }
 
@@ -119,7 +115,7 @@ class __TwigTemplate_f3b2bb0b31d931a74f3b4fc2182904768ccc1e7d158a121de81e9ee2325
 
     public function getDebugInfo()
     {
-        return array (  100 => 25,  92 => 22,  85 => 18,  80 => 16,  75 => 14,  71 => 13,  67 => 12,  63 => 11,  57 => 7,  54 => 6,  48 => 5,  36 => 3,  11 => 1,);
+        return array (  96 => 24,  88 => 21,  81 => 17,  76 => 15,  71 => 13,  67 => 12,  63 => 11,  57 => 7,  54 => 6,  48 => 5,  36 => 3,  11 => 1,);
     }
 }
 /* {% extends 'CvutFitBiWT1BlogUiBundle:Post:detail.html.twig' %}*/
@@ -133,7 +129,6 @@ class __TwigTemplate_f3b2bb0b31d931a74f3b4fc2182904768ccc1e7d158a121de81e9ee2325
 /* */
 /*             <form method="post" enctype="multipart/form-data">*/
 /*                 {{ form_start(form_comment, {'attr': {'novalidate': 'novalidate'}}) }}*/
-/*                 {{ form_row(form_comment.author.name) }}*/
 /*                 {{ form_row(form_comment.text) }}*/
 /*                 {{ form_widget(form_comment.files[0]) }}*/
 /*                 <div class="right-align">*/

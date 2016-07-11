@@ -71,10 +71,16 @@ textarea {
 }
 
 .commentButtons .btn {
+    font-size: 0.75em;
 }
 
 .commentForm {
     padding-left: 5em;
+}
+
+.reply {
+    left: 10%;
+    width: 90%;
 }
 
 .content-left {

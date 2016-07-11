@@ -21,7 +21,6 @@ class CommentType extends AbstractType
                 'trim' => false,
                 'required' => true
             ))
-            ->add('author', new UserType())
             ->add('files', 'collection', array(
                 'label' => 'Přílohy: ',
                 'type' => new FileType(),
