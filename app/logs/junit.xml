@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="PostFormTest" file="/home/Bui/WT1-Rep/src/Cvut/Fit/BiWT1/Blog/UiBundle/Tests/Form/PostFormTest.php" tests="2" assertions="2" failures="0" errors="0" time="1.158428">
+    <testcase name="testLogin" class="PostFormTest" file="/home/Bui/WT1-Rep/src/Cvut/Fit/BiWT1/Blog/UiBundle/Tests/Form/PostFormTest.php" line="25" assertions="0" time="0.592628"/>
+    <testcase name="testForm" class="PostFormTest" file="/home/Bui/WT1-Rep/src/Cvut/Fit/BiWT1/Blog/UiBundle/Tests/Form/PostFormTest.php" line="42" assertions="2" time="0.565800">
+      <system-out>Chapter TEST</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

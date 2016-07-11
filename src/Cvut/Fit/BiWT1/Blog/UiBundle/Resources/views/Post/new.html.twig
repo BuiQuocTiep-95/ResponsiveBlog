@@ -1,0 +1,42 @@
+{% extends 'CvutFitBiWT1BlogUiBundle::base.html.twig' %}
+
+{% block page_name %}Nový příspěvek{% endblock %}
+
+{% block javascript %}
+{% endblock %}
+
+{% form_theme form_post '@CvutFitBiWT1BlogUi/Form/checkbox.html.twig' %}
+
+{%  block h1 %}Nový příspěvek {% endblock %}
+
+{% block body %}
+        {{ form_start(form_post, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_row(form_post.title) }}
+        {#{{ form_row(form_post.author.name) }}#}
+        {{ form_label(form_post.publishFrom) }}
+        <div class="formDate">
+                {{ form_widget(form_post.publishFrom) }}
+        </div>
+        {{ form_label(form_post.publishTo) }}
+        <div class="formDate">
+                {{ form_widget(form_post.publishTo) }}
+        </div>
+        <p>
+                <input type="checkbox" id="form_post_private" />
+                <label for="form_post_private">Osobni</label>
+        </p>
+        {{ form_row(form_post.text) }}
+
+        <ul class="tags" data-prototype="{{ form_widget(form_post.tags.vars.prototype) | e }}">
+                {# iterate over each existing tag and render its only field: name #}
+                {% for tag in form_post.tags %}
+                        <li>{{ form_row(tag.title) }}</li>
+                {% endfor %}
+        </ul>
+
+        {{ form_row(form_post.files) }}
+        {{ form_errors(form_post) }}
+        {{ form_row(form_post.save) }}
+        {{ form_end(form_post) }}
+
+{% endblock %}

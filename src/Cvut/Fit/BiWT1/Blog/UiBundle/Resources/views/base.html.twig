@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    {# insert meta informations #}
+    <meta charset="utf-8">
+    <meta name="keywords" content="blog">
+    <meta name="description" content="BI-WT1" />
+
+    <script type="text/javascript" src="{{ asset('bundles/cvutfitbiwt1blogui/js/jquery-2.2.0.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/cvutfitbiwt1blogui/jquery-ui-1.11.4.custom/jquery-ui.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
+    {% block javascripts %}
+        {% javascripts 'bundles/cvutfitbiwt1blogui/js/addTag.js' %}
+        <script defer src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% javascripts 'bundles/cvutfitbiwt1blogui/js/index.js' %}
+        <script defer src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        {% javascripts '@CvutFitBiWT1BlogUiBundle/Resources/public/js/materialize.js' %}
+        <script defer src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+
+
+    {% block stylesheets %}
+        {% stylesheets '@CvutFitBiWT1BlogUiBundle/Resources/public/css/normalize.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        {% stylesheets '@CvutFitBiWT1BlogUiBundle/Resources/public/css/materialize.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        {% stylesheets 'bundles/cvutfitbiwt1blogui/jquery-ui-1.11.4.custom/jquery-ui.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        {% stylesheets '@CvutFitBiWT1BlogUiBundle/Resources/public/css/main.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% endblock %}
+
+    <title>{% block page_name %}BI-WT1 | Blog{% endblock %}</title>
+
+</head>
+
+<body>
+
+    <header class="navbar-fixed flow-text">
+    {#logo - use image from img/logo.png using assets. Wrap it in a link with href to homepage#}
+
+        <nav class="teal darken-1">
+            <a href="{{ path('home') }}"> <img id="logo" class="brand-logo" src="{{ asset('bundles/cvutfitbiwt1blogui/images/logo.png') }}" alt="logo"> </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{{ path('home') }}">Úvodní stránka</a></li>
+                <li><a href="{{ path('home') }}">Blog</a></li>
+                <li><a href="{{ path('home') }}">O mně</a></li>
+                <li><a href="{{ path('home') }}">Kontakty</a></li>
+                {% if is_granted('ROLE_ADMIN') or  is_granted('ROLE_USER')%} <li><a href="{{ path('logout') }}">Odhlásit</a></li>
+                {% else %} <li><a href="{{ path('login') }}">Přihlásit</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+<div class="container" id="content">
+
+    <div class="flow-text">
+        <h1 class="center-align" >{% block h1 %}{% endblock %}</h1>
+    </div>
+
+    <article class="content-left flow-text">
+        {% block body %}
+        {% endblock %}
+    </article>
+
+    <aside class="content-right">
+        {% block sidebar %}
+        {% endblock %}
+    </aside>
+</div>
+
+<footer class="page-footer blue-grey lighten-2">
+    <div class="footer-copyright">
+        <div class="container white-text">
+            &copy; Bui Quoc Tiep 2015
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>

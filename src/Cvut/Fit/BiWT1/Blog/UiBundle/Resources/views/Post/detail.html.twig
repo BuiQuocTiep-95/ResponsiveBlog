@@ -1,0 +1,167 @@
+{% extends '@CvutFitBiWT1BlogUi/base.html.twig' %}
+
+{% block page_name %} {{ post.title }} {% endblock %}
+
+{% block h1 %} Detail příspěvku {%  endblock %}
+
+{% block body %}
+
+    <div class="card blue-grey darken-1">
+
+        <div class="card-content white-text">
+
+            <div>
+                <h2 class="orange-text darken-2">{{ post.title }}</h2>
+                <p>autor: {{ post.author.name }}</p>
+                <p>zveřejněno: {{ post.publishFrom | date }}</p>
+                <p>{% if post.private %} soukromé
+                      {% else %} veřejné{% endif %}</p>
+            </div>
+
+            <h3 class="orange-text darken-2">Obsah</h3>
+            <p class="flow-text">{{ post.text }}</p>
+
+            {% if not post.files.empty %}
+                {% for file in post.files %}
+                    {% if file.preview is defined %}
+                        <a href="{{ path('image',{'id': file.id}) }}"><img class="img-thumbnail" alt="uploaded image" src="{{ path('preview',{'id': file.id}) }}" /></a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            {% if not post.files.isEmpty %}{% endif %}
+            <ul id="files">
+                {% if not post.files.isEmpty %} <li class="orange-text darken-2">Priloha: </li> {% endif %}
+                {% for file in post.files %}
+                    <li>
+                        <a class="light-blue-text" href="{{ path('file',{'id': file.id}) }}">{{ file.name }}</a>
+                        {%- if not loop.last -%}
+                            ,
+                        {% endif %}
+                    </li>
+
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+    {% for tag in post.tags %}
+        <div class="chip teal lighten-1 white-text"> {{ tag.title }} </div>
+    {% endfor %}
+
+        <section id="comments">
+
+        <h4>Komentáře</h4>
+
+        {% if post.comments is empty %}
+            <p>Žádné komentáře nejsou k dispozici.</p>
+
+        {% else %}
+        {% for comment in post.comments %}
+            <div class="card blue-grey lighten-1 white-text comment">
+                <h5 class="orange-text darken-3"> {{ comment.author.name }}, {{ comment.created | date }} </h5>
+                <div class="container"> <p> {{ comment.text }} </p> </div>
+
+                {% if not comment.files.isEmpty %}
+
+                    {% for file in comment.files %}
+                        {% if file.preview is defined %}
+                            <a href="{{ path('image',{'id': file.id}) }}"><img class="img-thumbnail" alt="uploaded image" src="{{ path('preview',{'id': file.id}) }}" /></a>
+                        {% endif %}
+                    {% endfor %}
+
+                    <div>
+                    {% for file in comment.files %}
+                        {% block solution %}
+                            <a href="{{ path('file',{'id': file.id}) }}">{{ file.name }}</a>
+                        {%- if not loop.last -%}
+                            ,
+
+                        {%  endif %}
+                        {% endblock %}
+                    {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="right commentButtons">
+                    <a class="btn" href="{{ path('reply_comment', {'id': comment.id}) }}">Odpovědět</a>
+                    <a class="btn" href="{{ path('update_comment', {'id': comment.id}) }}">Upravit</a>
+                    <a class="btn" href="{{ path('delete_comment', {'id': comment.id}) }}">Smazat</a>
+                </div>
+            </div>
+
+            {% block formComment %}
+            {% endblock %}
+
+            {% if not comment.children is empty %}
+                {% for reply in comment.children %}
+                    <div class="reply">
+
+                        <h3> {{ reply.author.name }}, {{ reply.created | date }} </h3>
+                        <p> {{ reply.text }} </p>
+
+                        {% if not reply.files.isEmpty %}
+
+                            {% for file in reply.files %}
+                                {% if file.preview is defined %}
+                                    <a href="{{ path('image',{'id': file.id}) }}"><img class="img-thumbnail" alt="uploaded image" src="{{ path('preview',{'id': file.id}) }}" /></a>
+                                {% endif %}
+                            {% endfor %}
+
+                            <div>
+                                {% for file in reply.files %}
+                                    {% if not file.preview is defined %}
+
+                                        <a href="{{ path('file',{'id': file.id}) }}">{{ file.name }}</a>
+
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="right commentButtons">
+                            <a class="btn" href="{{ path('update_comment', {'id': comment.id}) }}">Upravit</a>
+                            <a class="btn" href="{{ path('delete_comment', {'id': comment.id}) }}">Smazat</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        {% endfor %}
+
+        {% endif %}
+
+        {% block newComment %}
+        <div class="container">
+        <h5>Přidat nový komentář</h5>
+
+            {{ form_start(form_comment, {'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_row(form_comment.author.name) }}
+            {{ form_row(form_comment.text) }}
+            <div>
+                {% for file in form_comment.files %}
+                    <div class="file-path-wrapper">
+                        {{ form_widget(file, {'attr': {'multiple': 'multiple'}}) }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="right-align">
+                {{ form_row(form_comment.save) }}
+            </div>
+            {{ form_end(form_comment) }}
+        {% endblock %}
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block sidebar %}
+    <ul>
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}<li><a class="btn orange darken-1" href="{{ path('new_post') }}">Nový příspěvek</a></li>{% endif %}
+        {% if is_granted('edit', post) %}<li><a class="btn orange darken-1" href="{{ path('post_update', { 'id': post.id }) }}">Upravit příspěvek</a></li>{% endif %}
+        {% if not post.files.empty and is_granted('edit', post) %}<li><a class="btn orange darken-1" href="{{ path('post_files_delete', {'id': post.id}) }}">Smazat přílohy</a></li>{% endif %}
+        {% if is_granted('edit', post) %}<li><a class="btn orange darken-1" href="{{ path('post_delete', {'id': post.id}) }}">Smazat příspěvek</a></li>{% endif %}
+    </ul>
+
+{% endblock %}

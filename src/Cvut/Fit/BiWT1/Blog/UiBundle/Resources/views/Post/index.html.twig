@@ -1,0 +1,80 @@
+{% extends '@CvutFitBiWT1BlogUi/base.html.twig' %}
+
+{% form_theme form_filter '@CvutFitBiWT1BlogUi/Form/checkbox.html.twig' %}
+
+{% block page_name %}WT1 - Blog{% endblock %}
+
+{% block h1 %}Příspěvky{% endblock %}
+
+{% block body %}
+
+    {% for row in posts %}
+        <div class="card blue-grey darken-1 postPreview">
+            <div class="card-content flow-text">
+                <h2 class="orange-text">{{ row.title }}</h2>
+                <p class="white-text">autor: {{ row.author.name }}</p>
+                <p class="white-text">zveřejněno: {{ row.publishFrom | date }}</p>
+                <p class="white-text">{% if row.private %} soukromé
+                      {% else %} veřejné{% endif %}</p>
+                <h3 class="orange-text">Obsah</h3>
+                <p id="{{ "post#{row.id}" }}" class="white-text">{{ row.text }}</p>
+                <div class="card-action right-align">
+                    <a class="preview waves-effect waves-teal btn-flat orange-text" id="{{ "#{row.id}" }}">Náhled</a>
+                    <a class="waves-effect waves-teal btn-flat orange-text" href="{{ path('post_detail', {'id': row.id}) }}">Více</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div id="preview" title="Náhled">
+        <p></p>
+    </div>
+
+    {% if pages > 1 %}
+        <ul class="pagination center-align">
+            {% if app.request.get('page',1)!=1 %}
+                <li class="waves-effect"><a href="{{ path('home',app.request.query.all | merge({'page': app.request.get('page',1)-1 })) }}"><i class="material-icons">chevron_left</i></a></li>
+            {% else %}
+                <li class="disabled"><a href="{{ path('home',app.request.query.all | merge({'page': app.request.get('page',1)-1 })) }}"><i class="material-icons">chevron_left</i></a></li>
+            {% endif %}
+
+            {% for number in 1..pages %}
+                {% if app.request.get('page',1)!=number %}
+                    <li class="waves-effect"><a href="{{ path('home',app.request.query.all | merge({'page': number})) }}">{{ number }}</a></li>
+                {% else %}
+                    <li class="active orange white-text ">{{ number }}</li>
+                {% endif %}
+
+                {% if loop.last %}
+                    {% if app.request.get('page',1)!=number %}
+                        <li class="waves-effect"><a href="{{ path('home',app.request.query.all | merge({'page': app.request.get('page',1)+1 })) }}"><i class="material-icons">chevron_right</i></a></li>
+                    {% else %}
+                        <li class="disabled"><a href="{{ path('home',app.request.query.all | merge({'page': app.request.get('page',1)+1 })) }}"><i class="material-icons">chevron_right</i></a></li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+
+        </ul>
+    {% endif %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <ul>
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+            <li><a class="btn orange darken-1" href="{{ path('new_post') }}">Nový příspěvek</a></li>
+        {% endif %}
+    </ul>
+    {{ form_start(form_filter) }}
+    {{ form_label(form_filter.authors) }}
+    {{ form_widget(form_filter.authors) }}
+    {{ form_row(form_filter.month) }}
+    {{ form_row(form_filter.tags) }}
+    {{ form_row(form_filter.private) }}
+    {{ form_row(form_filter.published) }}
+    {{ form_errors(form_filter) }}
+    <div class="right-align">
+        {{ form_row(form_filter.save) }}
+    </div>
+    {{ form_end(form_filter) }}
+{% endblock %}

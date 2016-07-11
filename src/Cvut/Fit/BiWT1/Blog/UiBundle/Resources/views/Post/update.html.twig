@@ -1,0 +1,53 @@
+{% extends '@CvutFitBiWT1BlogUi/Post/new.html.twig' %}
+
+{% block page_name %}Úprava příspěvku{% endblock %}
+
+{% block h1 %}Úprava příspěvku{% endblock %}
+
+{% form_theme form_post '@CvutFitBiWT1BlogUi/Form/checkbox.html.twig' %}
+
+{% block body %}
+
+
+
+    {{ form_start(form_post, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_row(form_post.title) }}
+    {% if is_granted('ROLE_ADMIN') %} {{ form_row(form_post.author.name) }}#} {% endif %}
+    {{ form_label(form_post.publishFrom) }}
+    <div class="formDate">
+        {{ form_widget(form_post.publishFrom) }}
+    </div>
+    {{ form_label(form_post.publishTo) }}
+    <div class="formDate">
+        {{ form_widget(form_post.publishTo) }}
+    </div>
+    {{ form_row(form_post.private) }}
+    {{ form_row(form_post.text) }}
+
+    <ul class="tags" data-prototype="{{ form_widget(form_post.tags.vars.prototype) | e }}">
+        {# iterate over each existing tag and render its only field: name #}
+        {% for tag in form_post.tags %}
+            <li>{{ form_row(tag.title) }}</li>
+        {% endfor %}
+    </ul>
+    {{ form_row(form_post.files) }}
+    {{ form_errors(form_post) }}
+    <div class="right-align">
+        {{ form_row(form_post.save) }}
+    </div>
+    {{ form_end(form_post) }}
+
+{% endblock %}
+
+
+{% block sidebar %}
+    <ul>
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+            <li><a class="btn orange darken-1" href="{{ path('new_post') }}">Nový příspěvek</a></li>
+        {% endif %}
+        {% if not post.files.empty %}
+            <li><a class="btn orange darken-1" href="{{ path('post_files_delete', {'id': post.id}) }}">Smazat přílohy</a></li>
+        {% endif %}
+        <li><a class="btn orange darken-1" href="{{ path('post_delete', {'id': post.id}) }}">Smazat příspěvek</a></li>
+    </ul>
+{% endblock %}

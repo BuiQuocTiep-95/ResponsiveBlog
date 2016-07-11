@@ -1,0 +1,42 @@
+services:
+
+    cvut_fit_biwt1_blog_base.service.functionality.post:
+        class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Functionality\PostFunctionality
+        calls:
+            - [setRepository, [@cvut_fit_biwt1_blog_base.entity.repository.post]]
+
+    # TODO - Add other functionalities.
+
+    cvut_fit_biwt1_blog_base.service.functionality.comment:
+            class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Functionality\CommentFunctionality
+            calls:
+                - [setRepository, [@cvut_fit_biwt1_blog_base.entity.repository.comment]]
+
+    cvut_fit_biwt1_blog_base.service.functionality.file:
+            parent: cvut_fit_bi_wt1_blog_base.service_functionality_file.flysystem_integration
+            class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Functionality\FileFunctionality
+            calls:
+                - [setRepository, [@cvut_fit_biwt1_blog_base.entity.repository.file]]
+
+
+    cvut_fit_biwt1_blog_base.service.functionality.image:
+            class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Functionality\ImageFunctionality
+            calls:
+                - [setRepository, [@cvut_fit_biwt1_blog_base.entity.repository.image]]
+
+
+    cvut_fit_biwt1_blog_base.service.functionality.tag:
+            class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Functionality\TagFunctionality
+            calls:
+                - [setRepository, [@cvut_fit_biwt1_blog_base.entity.repository.tag]]
+
+
+    cvut_fit_biwt1_blog_base.service.functionality.user:
+            class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Functionality\UserFunctionality
+            calls:
+                - [setRepository, [@cvut_fit_biwt1_blog_base.entity.repository.user]]
+
+    cvut_fit_bi_wt1_blog_base.service_functionality_file.flysystem_integration:
+        abstract: true
+        calls:
+           - [ setFilesystem, [ @cvut_fit_bi_wt1_blog.filesystem.blog_files ]]

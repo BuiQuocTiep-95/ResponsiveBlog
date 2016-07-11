@@ -1,0 +1,185 @@
+/** insert your styles here **/
+body {
+    font-size: 0.625em;
+    font-family: Abyssinica SIL, Helvetica, sans-serif;
+    padding: 2vw;
+}
+
+#logo {
+    height: 2em;
+}
+
+header {
+    margin-bottom: 4em;
+}
+
+nav {
+    float: right;
+    margin-right: auto;
+    font-family: Helvetica, sans-serif;
+    font-size: 2em;
+}
+
+nav a, nav a:visited {
+    color: darkslateblue;
+    text-decoration: none;
+    margin-right: 0.625em;
+}
+
+nav a:hover {
+    color: dodgerblue;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+#subHeadline {
+    color: grey;
+}
+
+#tags {
+    font-size: 1.75em;
+    color: darkslategrey;
+}
+
+#tags li {
+    display: inline-block;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+label {
+    font-weight: bold;
+}
+
+#content a {
+    text-decoration: none;
+}
+
+form {
+    font-size: 1.5em;
+    margin-left: 1em;
+}
+
+form div *  {
+    /* display: inline-block; */
+    margin-right: 0.75em;
+    width: auto;
+}
+
+form div select::-ms-expand {
+    display: none;
+}
+
+article p {
+    font-size: 1.5em;
+}
+article img {
+    width: 100%;
+}
+
+blockquote {
+    font-weight: bold;
+    font-style: italic;
+    border-top: dotted;
+    border-bottom: dotted;
+    border-width: thin;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    padding: 1.5em;
+    font-size: 2em;
+}
+
+#comments p {
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+}
+
+aside a:hover {
+    text-decoration: none;
+    color: dodgerblue;
+}
+ul {
+    list-style-type: none;
+    margin-bottom: 1em;
+}
+
+.btn {
+    font-family: Arial, sans-serif;
+    font-size: 2em;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.3em;
+    display: block;
+    color: #4b0cff;
+}
+
+.categories {
+    font-size: 2em;
+}
+
+.btn-primary {
+    background: #0066FF;
+    -webkit-border-radius: 0.3em;
+    -moz-border-radius: 0.3em;
+    border-radius: 0.3em;
+    border: solid black 0.1em;
+    color: white;
+    padding: 0.2em;
+    font-size: 2em;
+    margin-top: 1em;
+}
+
+.btn-primary:hover {
+    background: #0099FF;
+    color: white;
+}
+
+.btn-secondary {
+    background: #00FF00;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    border-radius: 0.5em;
+}
+
+.btn-secondary:hover {
+    background: #00CC33;
+    color: white;
+}
+
+/** layout **/
+.container {
+    max-width: 80vw;
+    min-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.container * {
+    margin-top: 0.75em;
+}
+
+footer {
+    margin-top: 0.75em;
+    position:absolute;
+    bottom:0;
+    font-size: 1.5em;
+    height: 2em;
+}
+
+#content {
+    overflow: hidden;
+}
+.content-left {
+    width: 70%;
+    margin-right:
+    5%;
+    float: left;
+}
+.content-right {
+    width: 25%;
+    float: right;
+}

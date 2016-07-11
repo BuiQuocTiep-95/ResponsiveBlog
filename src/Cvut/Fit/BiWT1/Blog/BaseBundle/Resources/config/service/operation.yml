@@ -1,0 +1,30 @@
+services:
+
+    cvut_fit_biwt1_blog_base.service.operation.post:
+        class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Operation\PostOperation
+        calls:
+            - [setPostFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.post]]
+            - [setFileFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.file]]
+            - [setTagFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.tag]]
+            - [setUserFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.user]]
+            - [setCommentFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.comment]]
+            - [setFileOperation, [@cvut_fit_biwt1_blog_base.service.operation.file]]
+
+
+    cvut_fit_biwt1_blog_base.service.operation.file:
+        class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Operation\FileOperation
+        calls:
+            - [setFileFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.file]]
+
+    cvut_fit_biwt1_blog_base.service.operation.filter:
+        class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Operation\FilterOperation
+        arguments: ["@request_stack"]
+
+    cvut_fit_biwt1_blog_base.service.operation.comment:
+        class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Operation\CommentOperation
+        calls:
+            - [setPostFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.post]]
+            - [setFileFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.file]]
+            - [setCommentFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.comment]]
+            - [setUserFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.user]]
+            - [setFileOperation, [@cvut_fit_biwt1_blog_base.service.operation.file]]

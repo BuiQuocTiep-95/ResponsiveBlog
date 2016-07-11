@@ -1,0 +1,18 @@
+
+		<aside class="content-right">
+			<ul>
+				<li><a class="btn orange darken-1" href="#/new">Nový příspěvek</a></li>
+				<li><a class="btn orange darken-1" href="#/posts/edit/id/{$post.id$}">Upravit</a></li>
+			</ul>
+		</aside>
+
+		<article class="content-left card blue-grey darken-1 postPreview post">
+			<div class="card-content flow-text">
+				<h2 class="orange-text">{$post.title$}</h2>
+				<span class="white-text tag" ng-repeat="tag in post.tags">{$tag.title$}</span>
+				<span class="white-text">{$post.created | date:'yyyy-MM-dd' $}</span>
+				<div ng-if="post.comments.length" ><span class="white-text">komentářů: {$ post.comments.length $}</span></div>
+				<h2 class="orange-text">Obsah</h2>
+				<p class="white-text">{$post.text$}</p>
+			</div>
+		</article>

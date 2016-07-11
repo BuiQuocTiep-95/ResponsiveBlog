@@ -1,0 +1,35 @@
+{% extends 'CvutFitBiWT1BlogUiBundle::base.html.twig' %}
+
+{% block page_name %}Smazání přílohy{% endblock %}
+
+{% block h1 %} Smazání přílohy {% endblock %}
+
+{% block body %}
+
+{% for file in post.files %}
+    <div class="card blue-grey darken-1 orange-text darken">
+        <div class="card-content">
+            <h4 >{{ loop.index }}. {{ file.name }}</h4>
+            {% if file.preview is defined %}
+                <a href="{{ path('image',{'id': file.id}) }}"><img class="img-thumbnail" alt="uploaded image" src="{{ path('preview',{'id': file.id}) }}" /></a>
+            {% else %}
+                <a href="{{ path('file',{'id': file.id}) }}">{{ file.name }}</a>
+            {% endif %}
+            <div class="right-align card-action">
+                <a href="{{ path('file_delete', {'id': file.id}) }}">Smazat</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
+
+{% block sidebar %}
+    <ul>
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
+            <li><a class="btn orange darken-1" href="{{ path('new_post') }}">Nový příspěvek</a></li>
+        {% endif %}
+        <li><a class="btn orange darken-1" href="{{ path('post_update', {'id': post.id}) }}">Upravit příspěvek</a></li>
+        <li><a class="btn orange darken-1" href="{{ path('post_delete', {'id': post.id}) }}">Smazat příspěvek</a></li>
+    </ul>
+{% endblock %}

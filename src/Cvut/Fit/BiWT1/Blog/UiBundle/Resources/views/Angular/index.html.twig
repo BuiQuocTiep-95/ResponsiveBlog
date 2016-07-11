@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="blog">
+	<head>
+		{# insert meta informations #}
+		<meta charset="utf-8">
+		<meta name="keywords" content="blog">
+		<meta name="description" content="BI-WT1" />
+		{% stylesheets '@CvutFitBiWT1BlogUiBundle/Resources/public/css/normalize.css'
+		'@CvutFitBiWT1BlogUiBundle/Resources/public/css/modal.css' 'bundles/cvutfitbiwt1blogui/css/materialize.css'
+		'@CvutFitBiWT1BlogUiBundle/Resources/public/css/main.css' %}
+		<link rel="stylesheet" href="{{ asset_url }}">
+		{% endstylesheets %}
+
+		{% javascripts
+		'@CvutFitBiWT1BlogUiBundle/Resources/public/js/angular.min.js'
+		'@CvutFitBiWT1BlogUiBundle/Resources/public/js/route.js'
+		'@CvutFitBiWT1BlogUiBundle/Resources/public/js/angular-resources.js'
+		'@CvutFitBiWT1BlogUiBundle/Resources/public/js/services.js'
+		'@CvutFitBiWT1BlogUiBundle/Resources/public/js/controllers.js'
+		'@CvutFitBiWT1BlogUiBundle/Resources/public/js/app.js'
+		%}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+		<title>BI-WT2 | Blog</title>
+	</head>
+
+	<body>
+		<header class="navbar-fixed flow-text">
+			<nav class="teal darken-1">
+				{% image '@CvutFitBiWT1BlogUiBundle/Resources/public/images/logo.png' %}
+				<a href="/"><img alt="logo" class="brand-logo left-align" src="{{ asset_url }}"/></a>
+				{% endimage %}
+			</nav>
+		</header>
+
+		<div class="flow-text"><h1 class="center-align" >WT2-Blog</h1></div>
+
+		<div class="container" id="content" ng-view>
+		</div>
+
+		<footer class="container">
+		</footer>
+	</body>
+</html>

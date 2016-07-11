@@ -1,0 +1,27 @@
+imports:
+  - { resource: "repository.yml" }
+  - { resource: "service/functionality.yml" }
+  - { resource: "service/operation.yml" }
+
+services:
+
+  cvut_fit_bi_wt1_blog_base.service_doctrine.transaction:
+    class: Cvut\Fit\BiWT1\Blog\BaseBundle\Service\Doctrine\Transaction
+    arguments: [ @doctrine ]
+
+  cvut_fit_bi_wt1_blog_base.security.post_voter:
+    class: Cvut\Fit\BiWT1\Blog\BaseBundle\Security\Voter\PostVoter
+    tags:
+      - { name: security.voter }
+
+  cvut_fit_bi_wt1_blog_base.security.api_key_user_provider:
+    class: Cvut\Fit\BiWT1\Blog\BaseBundle\Security\API\ApiKeyUserProvider
+    calls:
+      - [setUserFunctionality, [@cvut_fit_biwt1_blog_base.service.functionality.user]]
+
+  cvut_fit_bi_wt1_blog_base.security.api_key_authenticator:
+    class: Cvut\Fit\BiWT1\Blog\BaseBundle\Security\API\ApiKeyAuthenticator
+
+  cvut_fit_biwt1_blog_base.service.operation.agregate_controller:
+    class: Cvut\Fit\BiWT1\Blog\UiBundle\Controller\AgregateController
+    arguments: ["@serializer", "@service_container"]

@@ -1,0 +1,26 @@
+{% extends 'CvutFitBiWT1BlogUiBundle:Post:detail.html.twig' %}
+
+{% block page_name %}Detail příspěvku | Úprava {% endblock %}
+
+{% block formComment %}
+    {% if comment.id == id %}
+        <div class="commentForm">
+            <h5>Úprava komentáře</h5>
+
+            <form method="post" enctype="multipart/form-data">
+                {{ form_start(form_comment, {'attr': {'novalidate': 'novalidate'}}) }}
+                {{ form_row(form_comment.author.name) }}
+                {{ form_row(form_comment.text) }}
+                {{ form_widget(form_comment.files[0]) }}
+                <div class="right-align">
+                    {{ form_widget(form_comment.save) }}
+                </div>
+                {{ form_end(form_comment) }}
+            </form>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block solution %}
+{% endblock %}
