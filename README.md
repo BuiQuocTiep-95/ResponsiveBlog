@@ -1,4 +1,5 @@
-WT1-Blog_base
+ResponsiveBlog
+
 =============
 
-A Symfony project created on October 15, 2015, 1:03 pm.
+A Symfony project using Symfony 2, AngularJS and bootstrap.
