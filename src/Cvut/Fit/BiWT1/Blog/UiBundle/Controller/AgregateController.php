@@ -56,8 +56,9 @@ class AgregateController extends ContainerAware
 
         $author = new User();
         $author->setName(json_decode($input, true)["channel"]["title"]);
-        $author->setPassword( sha1(time()));
-        $i = 0;
+        $author->setPassword( sha1(time()) );
+        $author->setApiKey( sha1(time()) );
+        $author->addRoles('ROLE_USER');
 
         foreach($data->getChannel()->getItem() as $index => $item) {
             $string = $this->serializer->serialize($item,'json');

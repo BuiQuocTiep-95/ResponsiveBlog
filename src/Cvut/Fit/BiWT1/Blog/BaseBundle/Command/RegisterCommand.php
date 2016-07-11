@@ -30,6 +30,12 @@ class RegisterCommand extends ContainerAwareCommand
                 InputArgument::REQUIRED,
                 'apikey'
             )
+            ->addArgument(
+                'role',
+                null,
+                InputArgument::REQUIRED,
+                'ROLE_USER'
+            )
         ;
     }
 
@@ -40,14 +46,16 @@ class RegisterCommand extends ContainerAwareCommand
         $username = $input->getArgument('username');
         $password = $input->getArgument('password');
         $apikey = $input->getArgument('apikey');
+        $role = $input->getArgument('role');
 
         $user=new User();
         $password = $encoder->encodePassword($user, $password);
+        $apikey = sha1($apikey);
 
         $user->setName($username);
         $user->setPassword($password);
         $user->setApiKey($apikey);
-        $user->addRoles('ROLE_USER');
+        $user->addRoles($role);
 
         $userFunctionality->create($user);
         $output->writeln("Success");

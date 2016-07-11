@@ -11793,15 +11793,24 @@ textarea {
     text-overflow: ellipsis;
 }
 
-.ui-widget-header,.ui-state-default{
-    background:#b9cd6d;
-    border: 1px solid #b9cd6d;
+.ui-dialog {
+    background-color: transparent;
+    font-size: 1.5em;
+    display: none;
+    border: none;
+}
+
+.ui-widget-header, .ui-state-default{
+    font-size: 1.75em;
+    background: transparent;
+    border: none;
     color: #FFFFFF;
     font-weight: bold;
 }
 
-.ui-widget-overlay.ui-front {
+.ui-widget-overlay .ui-front {
     cursor: hand;
+    background: transparent;
 }
 
 .brand-logo {

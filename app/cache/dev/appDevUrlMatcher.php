@@ -315,96 +315,93 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/old')) {
-            if (0 === strpos($pathinfo, '/old/post')) {
-                // reply_comment
-                if (preg_match('#^/old/post/(?P<id>[^/]++)/reply_comment$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'reply_comment')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\CommentController::replyAction',));
-                }
-
-                // update_comment
-                if (preg_match('#^/old/post/(?P<id>[^/]++)/update_comment$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'update_comment')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\CommentController::updateAction',));
-                }
-
-                // delete_comment
-                if (preg_match('#^/old/post/(?P<id>[^/]++)/delete_comment$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_comment')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\CommentController::deleteAction',));
-                }
-
+        if (0 === strpos($pathinfo, '/post')) {
+            // reply_comment
+            if (preg_match('#^/post/(?P<id>[^/]++)/reply_comment$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'reply_comment')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\CommentController::replyAction',));
             }
 
-            // file
-            if (0 === strpos($pathinfo, '/old/files') && preg_match('#^/old/files/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'file')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\FileController::fileAction',));
+            // update_comment
+            if (preg_match('#^/post/(?P<id>[^/]++)/update_comment$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'update_comment')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\CommentController::updateAction',));
             }
 
-            // image
-            if (0 === strpos($pathinfo, '/old/image') && preg_match('#^/old/image/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'image')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\FileController::imageAction',));
-            }
-
-            // preview
-            if (0 === strpos($pathinfo, '/old/preview') && preg_match('#^/old/preview/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'preview')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\FileController::previewAction',));
-            }
-
-            // file_delete
-            if (0 === strpos($pathinfo, '/old/file') && preg_match('#^/old/file/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'file_delete')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\FileController::deleteAction',));
-            }
-
-            // cvut_fit_biwt1_blog_ui_post_admin
-            if ($pathinfo === '/old/admin') {
-                return array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::adminAction',  '_route' => 'cvut_fit_biwt1_blog_ui_post_admin',);
-            }
-
-            // home
-            if (rtrim($pathinfo, '/') === '/old') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'home');
-                }
-
-                return array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::indexAction',  '_route' => 'home',);
-            }
-
-            // new_post
-            if ($pathinfo === '/old/newpost') {
-                return array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::newAction',  '_route' => 'new_post',);
-            }
-
-            if (0 === strpos($pathinfo, '/old/post')) {
-                // post_update
-                if (preg_match('#^/old/post/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'post_update')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::updateAction',));
-                }
-
-                // post_detail
-                if (preg_match('#^/old/post/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'post_detail')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::detailAction',));
-                }
-
-                // post_files_delete
-                if (preg_match('#^/old/post/(?P<id>[^/]++)/files_delete$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'post_files_delete')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::deleteFilesAction',));
-                }
-
-                // post_delete
-                if (preg_match('#^/old/post/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'post_delete')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::deleteAction',));
-                }
-
-            }
-
-            // login
-            if ($pathinfo === '/old/login') {
-                return array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
+            // delete_comment
+            if (preg_match('#^/post/(?P<id>[^/]++)/delete_comment$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_comment')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\CommentController::deleteAction',));
             }
 
         }
 
-        // cvut_fit_biwt1_blog_ui_angular_index
+        // file
+        if (0 === strpos($pathinfo, '/files') && preg_match('#^/files/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'file')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\FileController::fileAction',));
+        }
+
+        // image
+        if (0 === strpos($pathinfo, '/image') && preg_match('#^/image/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'image')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\FileController::imageAction',));
+        }
+
+        // preview
+        if (0 === strpos($pathinfo, '/preview') && preg_match('#^/preview/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'preview')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\FileController::previewAction',));
+        }
+
+        // file_delete
+        if (0 === strpos($pathinfo, '/file') && preg_match('#^/file/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'file_delete')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\FileController::deleteAction',));
+        }
+
+        // cvut_fit_biwt1_blog_ui_post_admin
+        if ($pathinfo === '/admin') {
+            return array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::adminAction',  '_route' => 'cvut_fit_biwt1_blog_ui_post_admin',);
+        }
+
+        // home
         if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'home');
+            }
+
+            return array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::indexAction',  '_route' => 'home',);
+        }
+
+        // new_post
+        if ($pathinfo === '/newpost') {
+            return array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::newAction',  '_route' => 'new_post',);
+        }
+
+        if (0 === strpos($pathinfo, '/post')) {
+            // post_update
+            if (preg_match('#^/post/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'post_update')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::updateAction',));
+            }
+
+            // post_detail
+            if (preg_match('#^/post/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'post_detail')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::detailAction',));
+            }
+
+            // post_files_delete
+            if (preg_match('#^/post/(?P<id>[^/]++)/files_delete$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'post_files_delete')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::deleteFilesAction',));
+            }
+
+            // post_delete
+            if (preg_match('#^/post/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'post_delete')), array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\PostController::deleteAction',));
+            }
+
+        }
+
+        // login
+        if ($pathinfo === '/login') {
+            return array (  '_controller' => 'Cvut\\Fit\\BiWT1\\Blog\\UiBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
+        }
+
+        // cvut_fit_biwt1_blog_ui_angular_index
+        if (rtrim($pathinfo, '/') === '/ang') {
             if (substr($pathinfo, -1) !== '/') {
                 return $this->redirect($pathinfo.'/', 'cvut_fit_biwt1_blog_ui_angular_index');
             }

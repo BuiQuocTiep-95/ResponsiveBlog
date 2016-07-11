@@ -2,12 +2,12 @@
 cvut_fit_bi_wt1_blog_ui:
     resource: "@CvutFitBiWT1BlogUiBundle/Controller/"
     type:     annotation
-    prefix:   /old
+    prefix:   /
 
 cvut_fit_bi_wt1_blog_ng:
     resource: "@CvutFitBiWT1BlogUiBundle/Controller/AngularController.php"
     type:     annotation
-    prefix:   /
+    prefix:   /ang
 
 homepage:
     pattern:   /
